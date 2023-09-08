@@ -17,9 +17,9 @@ app.use(express.static("public"));
 
 //Connect database
 mongoose.connect(process.env.MONGO_URI,{
-    useCreateIndex:true,
+    //useCreateIndex:true,
     useNewUrlParser:true,
-    useFindAndModify:false,
+    //useFindAndModify:false,
     useUnifiedTopology:true
 }).then(()=>console.log("MongoDB connected"))
 .catch((err)=>console.log(err))
