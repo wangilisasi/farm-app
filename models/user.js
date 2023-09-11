@@ -1,6 +1,6 @@
 const mongoose=require("mongoose");
 const userSchema=new mongoose.Schema({
-        email:{
+        user_email:{
             type:String,
             //unique: true, // Ensures that each email is unique
             //required:true,
