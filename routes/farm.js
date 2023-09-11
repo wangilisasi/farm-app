@@ -48,7 +48,7 @@ router.delete("/:id", async(req,res)=>{
         //Find farm by ID
         let farm=await Farm.findById(req.params.id);
         //Delete image from cloudinary
-        await cloudinary.uploader.destroy(cso.cloudinary_id); //destroy takes the cloudinary public ID
+        await cloudinary.uploader.destroy(farm.cloudinary_id); //destroy takes the cloudinary public ID
         //Delete user from DB
         await farm.remove()
         res.json(farm);
@@ -61,7 +61,7 @@ router.put("/:id",upload.single("image"),async (req,res)=>{
     try{
         let farm=await Farm.findById(req.params.id);
         //first delete existing image
-        await cloudinary.uploader.destroy(cso.cloudinary_id);
+        await cloudinary.uploader.destroy(farm.cloudinary_id);
         //then upload the new file
         const result=await cloudinary.uploader.upload(req.file.path);
         //then create a request body
